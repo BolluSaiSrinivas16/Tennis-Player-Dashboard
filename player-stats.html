@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="player-details">
+        <img id="player-image" class="player-photo-large" alt="Player Image">
+        <div class="stats-container">
+            <h1 id="player-name"></h1>
+            <div id="player-stats"></div>
+        </div>
+    </div>
+
+    <script>
+        const player = JSON.parse(localStorage.getItem("selectedPlayer"));
+        if (player) {
+            document.getElementById("player-name").innerText = `${player.name} - ${player.country}`;
+            document.getElementById("player-image").src = player.photo;
+            document.getElementById("player-stats").innerHTML = `
+                <p><strong>Rank:</strong> ${player.rank}</p>
+                <p><strong>Wins:</strong> ${player.wins}</p>
+                <p><strong>Losses:</strong> ${player.losses}</p>
+                <p><strong>Grand Slams:</strong> ${player.grand_slams}</p>
+                <p><strong>First Serves %:</strong> ${player.first_serves}</p>
+                <p><strong>Aces:</strong> ${player.aces}</p>
+                <p><strong>Double Faults:</strong> ${player.double_faults}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .welcome-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(31, 31, 31, 0.9);
+            color: #b3e5fc;
+            text-align: center;
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+        }
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container" id="welcomeMessage">
+        <p>WELCOME TO THE WORLD OF TENNIS</p>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("welcomeMessage").classList.add("hidden");
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1500);
+        }, 3000); // Display for 3 seconds
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Players</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Compare Players</h1>
+        <button onclick="window.location.href='index.html'">Back to Home</button>
+    </header>
+
+    <section class="comparison-container">
+        <div class="player-comparison" id="player1"></div>
+        <div class="player-comparison" id="player2"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tennis Stats Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const players = JSON.parse(localStorage.getItem("comparisonPlayers"));
+        if (players && players.length === 2) {
+            document.getElementById("player1").innerHTML = `
+                <h2>${players[0].name}</h2>
+                <img src="${players[0].photo}" alt="${players[0].name}" class="player-photo-large">
+                <p><strong>Rank:</strong> ${players[0].rank}</p>
+                <p><strong>Wins:</strong> ${players[0].wins}</p>
+                <p><strong>Losses:</strong> ${players[0].losses}</p>
+                <p><strong>Grand Slams:</strong> ${players[0].grand_slams}</p>
+                <p><strong>Aces:</strong> ${players[0].aces}</p>
+                <p><strong>Double Faults:</strong> ${players[0].double_faults}</p>
+            `;
+            document.getElementById("player2").innerHTML = `
+                <h2>${players[1].name}</h2>
+                <img src="${players[1].photo}" alt="${players[1].name}" class="player-photo-large">
+                <p><strong>Rank:</strong> ${players[1].rank}</p>
+                <p><strong>Wins:</strong> ${players[1].wins}</p>
+                <p><strong>Losses:</strong> ${players[1].losses}</p>
+                <p><strong>Grand Slams:</strong> ${players[1].grand_slams}</p>
+                <p><strong>Aces:</strong> ${players[1].aces}</p>
+                <p><strong>Double Faults:</strong> ${players[1].double_faults}</p>
+            `;
+        } else {
+            alert("Select two players for comparison.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
